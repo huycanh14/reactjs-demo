@@ -11,6 +11,70 @@
 </head>
 <body>
   <div id="root"></div>
-  
+  <script type="text/babel">
+
+    function PostItem(props) {
+      return (
+        <div className="post-item">
+          <img src={props.image} alt={props.title} />
+          <h2 className="post-title">{props.title}</h2>
+          <p className="post-desc">{props.description}</p>
+          <p className="post-published">{props.publishedAt}</p>
+        </div> 
+      )
+    }
+
+    function PostItemDestructuring({
+        image,
+        title,
+        description,
+        publishedAt,
+        callback = () => {}
+    }) { 
+      callback(Math.random());
+      return (
+        <div className="post-item">
+          <img src={image} alt={title} />
+          <h2 className="post-title">{title}</h2>
+          <p className="post-desc">{description}</p>
+          <p className="post-published">{publishedAt}</p>
+        </div> 
+      )
+    }
+
+    // App js 
+    function App() {
+      return (<div id="wapper">
+        <PostItem 
+          title="1 C# (.NET) tương tác với file Excel"
+          image="https://res.klook.com/image/upload/c_fill,w_960,h_460,f_auto/w_80,x_15,y_15,g_south_west,l_klook_water/activities/ys5jqwvg6pgtpacb5kqb.webp"
+          description="Bạn có kiến thức ngôn ngữ C#! Bạn muốn thực hiện tương tác với file excel"
+          publishedAt="Một ngày trước . 5 phút đọc"
+        />
+        <PostItem 
+          title="2 C# (.NET) tương tác với file Excel"
+          image="https://res.klook.com/image/upload/c_fill,w_960,h_460,f_auto/w_80,x_15,y_15,g_south_west,l_klook_water/activities/ys5jqwvg6pgtpacb5kqb.webp"
+          description="Bạn có kiến thức ngôn ngữ C#! Bạn muốn thực hiện tương tác với file excel"
+          publishedAt="Một ngày trước . 5 phút đọc"
+        />
+        <PostItem 
+          title="3 C# (.NET) tương tác với file Excel"
+          image="https://res.klook.com/image/upload/c_fill,w_960,h_460,f_auto/w_80,x_15,y_15,g_south_west,l_klook_water/activities/ys5jqwvg6pgtpacb5kqb.webp"
+          description="Bạn có kiến thức ngôn ngữ C#! Bạn muốn thực hiện tương tác với file excel"
+          publishedAt="Một ngày trước . 5 phút đọc"
+        />
+        <PostItemDestructuring 
+          title=" C# (.NET) tương tác với file Excel"
+          image="https://res.klook.com/image/upload/c_fill,w_960,h_460,f_auto/w_80,x_15,y_15,g_south_west,l_klook_water/activities/ys5jqwvg6pgtpacb5kqb.webp"
+          description="Bạn có kiến thức ngôn ngữ C#! Bạn muốn thực hiện tương tác với file excel"
+          publishedAt="Một ngày trước . 5 phút đọc"
+          callback={(random) => {
+            console.log("random", random);
+          }}
+        />
+      </div>)
+    }
+    ReactDOM.render(<App />, document.getElementById("root"));
+  </script>
 </body>
 </html>
