@@ -6,9 +6,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   <title>Document</title>
 </head>
 <body>
-  
+  <!-- 
+    Jsx - Javascript XML
+    Jsx không phải là HTML, cần có Js, Babel để dùng JSX
+    Babel chuyển đổi các cú pháp ES6 trở lên thành ES5
+  -->
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const reactCourse = "ReactJs Course"
+    const courses = [
+      {
+        name: 'HTML, CSS'
+      }, 
+      {
+        name: "Responsive web design"
+      },
+      {
+        name: "ReactJs"
+      },
+    ]
+
+    const ul = <ul>
+      <li>Javascript</li>
+      <li>ReactJs</li>
+    </ul>
+
+    const maps = <ul>{ courses.map(( element, index) => <li key={index}>{element.name}</li>) }</ul>
+
+    ReactDOM.render(maps, document.getElementById("root"));
+  </script>
 </body>
 </html>
