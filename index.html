@@ -5,9 +5,48 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   <title>Document</title>
 </head>
 <body>
-  
+  <!-- 
+    REACT - DOM: là cầu nối giữa React và DOM. Tương tự cũng như làm cầu nối React với Native trong React - Native
+    
+   -->
+   <div id="root"></div>
+   <script>
+     // React
+     const ulREACT = React.createElement('ul', {
+      id: 'ui-li', 
+    }, 
+      React.createElement('li', {id: 'li-1'}, 'Javascript'),
+      React.createElement('li', null, 'ReactJs'),
+    );
+    const postItem = React.createElement('div', {
+      className: 'post-name'
+    }, React.createElement('h2', {
+        title: 'learning ReactJs'
+      }, 'Học ReactJs'),
+      React.createElement('p', {}, 'Học ReactJs từ cơ bản đến nâng cao'),
+      React.createElement('ul', {
+        id: 'ul-li',
+        className: 'tag-ul',
+        style: {'color': 'red', 'fontSize': '30px'}
+      },
+        React.createElement('li', {
+          id: 'li-1',
+          className: 'tag-li'
+        }, 'Javascript'),
+        React.createElement('li', null, 'ReactJs'),
+      )
+    );
+    console.log(postItem);
+    
+    // Get root element
+    const root = document.getElementById('root');
+
+    // React-Dom -> render UI
+    ReactDOM.render(postItem, root);
+   </script>
 </body>
 </html>
