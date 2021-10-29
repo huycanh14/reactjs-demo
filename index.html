@@ -12,5 +12,35 @@
 <body>
   <div id="root"></div>
   
+  <script type="text/babel">
+    
+    // function component
+    function Header() {
+      return (
+        <div className="header">Header</div>
+        
+      );
+    }
+
+    // class component
+
+    class Content extends React.Component {
+      render() {
+        return (
+          <div className="content">Content</div>
+        )
+      }
+    }
+
+    const app = (
+      <div className="wrapper">
+        <Header />
+        <Content />
+        <div className="footer">Footer</div>
+      </div>
+    );
+
+    ReactDOM.render(app, document.getElementById("root"));
+  </script>
 </body>
 </html>
