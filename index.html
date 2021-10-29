@@ -8,6 +8,53 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <script>
+
+    // DOM 
+    const h1DOM = document.createElement('h1');
+    h1DOM.title = "Hello";
+    h1DOM.className = 'heading';
+    h1DOM.innerText = 'Hello guys!';
+
+    
+    // REACT -> REACT-DOM
+    // React.createElement(type, props, children, n);  => children cũng là một props
+    const h1REACT = React.createElement('h1', {
+      title: 'Hello',
+      className: 'heading',
+    }, 'Hello guys');
+
+    console.dir(h1DOM);
+    console.log(h1REACT);
+
+    ////////////////////////////////----------------------------------
+
+    // DOM
+    const ulDOM = document.createElement('ul');
+    ulDOM.id = 'ul-li';
+    ulDOM.style = 'color: red; font-size: 30px;';
+
+    const liDOM1 = document.createElement('li');
+    liDOM1.innerText = 'Javascript';
+    liDOM1.id = "li-1";
+
+    const liDOM2 = document.createElement('li');
+    liDOM2.innerText = 'ReactJS';
+
+    ulDOM.appendChild(liDOM1);
+    ulDOM.appendChild(liDOM2);
+    document.body.appendChild(ulDOM);
+
+    // REACT
+    const ulREACT = React.createElement('ul', {
+      id: 'ui-li', 
+      style: 'color: red; font-size: 30px;'
+    }, 
+      React.createElement('li', {id: 'li-1'}, 'Javascript'),
+      React.createElement('li', null, 'ReactJs'),
+    );
+    console.log(ulREACT);
+
+  </script>
 </body>
 </html>
