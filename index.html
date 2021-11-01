@@ -11,6 +11,18 @@
 </head>
 <body>
   <div id="root"></div>
+
+  <script type="text/babel">
+    function App() {
+      return (
+        <div id="wapper">
+          <button onDoubleClick={() => console.log(Math.random())}> Click me </button>
+        </div>
+      )
+    }
+
+  ReactDOM.render(<App />, document.getElementById("root"));
+  </script>
   
 </body>
 </html>
