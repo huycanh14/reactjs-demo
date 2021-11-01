@@ -1,23 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from 'react'
 
+const orders = [100, 200, 300];
 function App() {
+
+  // const total = orders.reduce((total, cur) => total + cur);
+
+  // const [counter, setCounter] = useState(1);
+  // console.log('not callBack', total);
+  // init State - callBack
+  // const [counter, setCounter] = useState(total);
+  const [counter, setCounter] = useState(() => {
+    const total = orders.reduce((total, cur) => total + cur);
+    console.log('callBack',total);
+    return total;
+  });
+
+  const [info, setInfo] = useState({
+    name: "Nguyen Van A",
+    age: 18,
+    address: "Ha Noi"
+  })
+
+  const handleIncrease = () => {
+    // setCounter(counter + 1);
+
+    // callBack
+    setCounter(prevState => prevState + 1);
+    setCounter(prevState => prevState + 1);
+    setCounter(prevState => prevState + 1);
+  }
+
+  const handleUpdate = () => {
+    // setInfo({bio: "Yeu mau hong"});
+    // setInfo({...info,bio: "Yeu mau hong"});
+    setInfo(prev  => ({
+      ...prev,
+      bio: "Yeu mau hong"
+    }));
+  }
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <h1>{counter}</h1> */}
+      {/* <button onClick={handleIncrease}>Increase</button> */}
+      <h1> {JSON.stringify(info)} </h1>
+      <button onClick={handleUpdate}>Update</button>
     </div>
   );
 }
