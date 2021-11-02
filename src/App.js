@@ -1,50 +1,70 @@
 import {useState} from 'react'
 
-const orders = [100, 200, 300];
+// Response from API
+const courses = [
+  {
+    id: 1,
+    name: 'HTML, CSS'
+  },
+  {
+    id: 2,
+    name: 'Javascript'
+  },
+  {
+    id: 3,
+    name: 'ReactJs'
+  },
+];
+
+const gifts = [
+  "CPU i9",
+  "RAM 32GB RGB",
+  "RGB Keyboard"
+]
 function App() {
 
-  // const total = orders.reduce((total, cur) => total + cur);
+  const [gift, setGift] = useState();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [checked, setChecked] = useState(3);
 
-  // const [counter, setCounter] = useState(1);
-  // console.log('not callBack', total);
-  // init State - callBack
-  // const [counter, setCounter] = useState(total);
-  const [counter, setCounter] = useState(() => {
-    const total = orders.reduce((total, cur) => total + cur);
-    console.log('callBack',total);
-    return total;
-  });
-
-  const [info, setInfo] = useState({
-    name: "Nguyen Van A",
-    age: 18,
-    address: "Ha Noi"
-  })
-
-  const handleIncrease = () => {
-    // setCounter(counter + 1);
-
-    // callBack
-    setCounter(prevState => prevState + 1);
-    setCounter(prevState => prevState + 1);
-    setCounter(prevState => prevState + 1);
+  const randomGift = () => {
+    const index = Math.floor(Math.random() * gifts.length);
+    setGift(gifts[index]);
   }
 
-  const handleUpdate = () => {
-    // setInfo({bio: "Yeu mau hong"});
-    // setInfo({...info,bio: "Yeu mau hong"});
-    setInfo(prev  => ({
-      ...prev,
-      bio: "Yeu mau hong"
-    }));
+  const handleSubmit = () => {
+    
+    // Call API
+    console.log({
+      name,
+      email
+    });
   }
-  
+  // console.log(name);
   return (
     <div className="App">
-      {/* <h1>{counter}</h1> */}
-      {/* <button onClick={handleIncrease}>Increase</button> */}
-      <h1> {JSON.stringify(info)} </h1>
-      <button onClick={handleUpdate}>Update</button>
+      <div style={{padding: 32}}>
+
+        {courses.map((course, index) => (
+          <div key={index}>
+            <input type="radio" name="course" 
+                checked={checked === course.id} 
+                onChange={() => setChecked(course.id)} 
+              /> {course.name}
+          </div>
+        ))}
+
+        <h1>{ gift || 'Chua co phan thuong'}</h1>
+        <button onClick={randomGift}>Lay phan thuong</button>
+
+
+        <input type="text" onChange={e => setName(e.target.value)} value={name}/>
+        <input type="text" onChange={e => setEmail(e.target.value)} value={email}/>
+
+        {/* <button onClick={() => setName('Nguyen Van BBBB')}>Change name</button> */}
+        <button onClick={handleSubmit}>Register</button>
+      </div>
     </div>
   );
 }
