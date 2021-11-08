@@ -4,7 +4,6 @@ import { getUsers } from '../../actions/user';
 
 function ListUser(props) {
   const users = useSelector(state => state.user.users);
-  console.log(users);
   const dispatch = useDispatch();
 
   useEffect(() => {
