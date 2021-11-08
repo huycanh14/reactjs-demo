@@ -1,9 +1,9 @@
 import { 
   GET_USERS,
-  GET_USER,
-  ADD_USER,
-  EDIT_USER,
-  DELETE_USER,
+  // GET_USER,
+  // ADD_USER,
+  // EDIT_USER,
+  // DELETE_USER,
 } from "../constants/userConstant"
 import userApi from "../services/userApi"
 
