@@ -11,6 +11,11 @@ const userApi = {
     const url = `/users/${id}`;
     return axiosClient.get(url);
   },
+
+  add: (params) => {
+    const url = '/users';
+    return axiosClient.post(url, { params });
+  }
 }
 
 export default userApi;

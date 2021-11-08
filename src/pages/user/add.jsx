@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { addUser } from '../../actions/user';
 
 function AddUser() {
   const [name, setName] = useState('');
@@ -6,6 +8,7 @@ function AddUser() {
   const [gender, setGender] = useState('male');
   const [status, setStatus] = useState('inactive');
   const [messgeEmail, setMessgeEmail] = useState('');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     (/^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/.test(email)) ? setMessgeEmail(''):  setMessgeEmail("Not type email");
@@ -13,6 +16,14 @@ function AddUser() {
 
   function formPreventDefault(e) {
     e.preventDefault();
+    let params =  {
+      name: name, 
+      gender: gender, 
+      email: email, 
+      status: status
+    }
+    const action = addUser(params);
+    dispatch(action);
   }
 
   return (
