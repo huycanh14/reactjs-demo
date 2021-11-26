@@ -5,8 +5,9 @@ import { addUser } from '../../actions/user';
 function AddUser() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [gender, setGender] = useState('male');
-  const [status, setStatus] = useState('inactive');
+  const [date, setDate] = useState('');
+  const [phone, setPhone] = useState('');
+  const [interest, setInterest] = useState('');
   const [messgeEmail, setMessgeEmail] = useState('');
   const dispatch = useDispatch();
 
@@ -18,9 +19,10 @@ function AddUser() {
     e.preventDefault();
     let params =  {
       name: name, 
-      gender: gender, 
+      date: date, 
       email: email, 
-      status: status
+      phone: phone,
+      interest: interest
     }
     const action = addUser(params);
     dispatch(action);
@@ -56,26 +58,17 @@ function AddUser() {
             <small id="emailHelp" className={"form-text " + (messgeEmail && `text-danger`) }>{messgeEmail}</small>
           </div>
           <div className="form-group">
-            <label htmlFor="gender">Gender</label>
-            <div className="form-check form-check-inline">
-              <input className="form-check-input" type="radio" name="gender" id="male" defaultValue="male" checked={gender==="male"} onChange={e => setGender("male")}/>
-              <label className="form-check-label" htmlFor="male">Male</label>
-            </div>
-            <div className="form-check form-check-inline">
-              <input className="form-check-input" type="radio" name="gender" id="female" defaultValue="female" checked={gender==="female"} onChange={e => setGender("female")}/>
-              <label className="form-check-label" htmlFor="female">Female</label>
-            </div>
+            <label htmlFor="date">Date</label>
+            <input className="form-control" type="date" name="date" id="date"  onChange={e => setDate(e.target.value)}/>
           </div>
           <div className="form-group">
-            <label htmlFor="status">Status</label>
-            <div className="form-check form-check-inline">
-              <input className="form-check-input" type="radio" name="status" id="active" defaultValue="active" checked={status==="active"} onChange={e => setStatus("active")}/>
-              <label className="form-check-label" htmlFor="active">Active</label>
-            </div>
-            <div className="form-check form-check-inline">
-              <input className="form-check-input" type="radio" name="status" id="inactive" defaultValue="inactive" checked={status==="inactive"} onChange={e => setStatus("inactive")}/>
-              <label className="form-check-label" htmlFor="inactive">Inactive</label>
-            </div>
+            <label htmlFor="phone">Phone</label>
+            <input className="form-control" type="text" name="phone" id="phone" onChange={e => setPhone(e.target.value)}/>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="interest">Interest</label>
+            <input className="form-control" type="text" name="interest" id="interest" onChange={e => setInterest(e.target.value)}/>
           </div>
           
           <button type="submit" className="btn btn-primary">
