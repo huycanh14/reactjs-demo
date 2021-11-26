@@ -1,11 +1,11 @@
 import React, { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
 import Footer from "./layouts/Footer";
 import Header from "./layouts/Header";
 import Nav from "./layouts/Nav";
 import ListUser from "./pages/user/Index";
 import AddUser from "./pages/user/Add";
+import EditUser from "./pages/user/Edit";
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
                   <div className="col-sm-6">
                     <ol className="breadcrumb float-sm-right">
                       <li className="breadcrumb-item">
-                        <a href="#/">Home</a>
+                        <a href="/">Home</a>
                       </li>
                       <li className="breadcrumb-item active">Dashboard v1</li>
                     </ol>
@@ -44,6 +44,7 @@ function App() {
                     <Route path="*" element={<ListUser />} />
                     <Route path="" exact element={<ListUser />} />
                     <Route path="/user/add" exact element={<AddUser />} />
+                    <Route path="/user/edit/:id" exact element={<EditUser />} />
                   </Routes>
                 </div>
               </section>

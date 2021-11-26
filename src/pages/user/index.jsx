@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsers, removeUser } from '../../actions/user';
 import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom';
 
 function ListUser(props) {
   const users = useSelector(state => state.user.users);
@@ -50,7 +51,7 @@ function ListUser(props) {
                 <td>{user.phone}</td>
                 <td>{user.interest}</td>
                 <td>{user.date}</td>
-                <td><i className="fas fa-user-edit" style={{cursor: 'pointer'}}></i></td>
+                <td> <Link to={`user/edit/${user.id}`}><i className="fas fa-user-edit" style={{cursor: 'pointer'}}></i></Link> </td>
                 <td><i className="fas fa-user-minus" style={{cursor: 'pointer'}} onClick={( ) => confirmDeleteUser(user)}></i></td>
               </tr>
             ))}
